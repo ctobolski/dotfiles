@@ -29,12 +29,7 @@ set scrolloff=3
 set statusline=%f
 
 "Fuzzyfinder
-nmap <Space>o :tabnew <CR>:FufFileWithCurrentBufferDir<CR>
-nmap <Space>f :FufFileWithCurrentBufferDir<CR>
-nmap <Space>b :tabnew <CR>:FufBuffer<CR>
-nmap <Space>v :vnew <CR> :FufFileWithCurrentBufferDir<CR>
-nmap <Space>h :new <CR> :FufFileWithCurrentBufferDir<CR> 
-nmap <Space>t :FufTaggedFile<CR>
+nmap <Space>o :FZF <CR>
 
 "Force yourself to use the keyboard movement keys 
 nnoremap <Up> <NOP>
@@ -56,42 +51,21 @@ nmap <silent> <c-j> :wincmd j<CR>
 nmap <silent> <c-h> :wincmd h<CR>
 nmap <silent> <c-l> :wincmd l<CR>
 "rebind tab navigation
-nmap <silent> <Space>q :tabclose <CR> 
-nmap <silent> <Space>n :tabnext <CR> 
-nmap <silent> <Space>p :tabprevious <CR> 
-"Elm
-let g:elm_setup_keybindings = 0
-nmap <silent> <Space>e :ElmShowErrorDetail <CR>
-nmap <silent> <Space>l :ElmFormat <CR>
-
-"autocomplete matching pairs
-inoremap {<CR>  {<CR>}<Esc>O 
-inoremap (<CR>  (<CR>)<Esc>O 
-
+nmap <silent> <Space>w :tabclose <CR> 
+nmap <silent> <Space>l :tabnext <CR> 
+nmap <silent> <Space>h :tabprevious <CR> 
+nmap <silent> <Space>n :tabnew <CR>
+nmap <silent> <Space>d :lcd %:p:h <CR>
+" 
 "hit return again to clear search highlighting
 nnoremap <CR> :noh<CR><CR> 
 "vim builtins 
 runtime macros/matchit.vim
 
-let g:syntastic_always_populate_loc_list = 1
-let g:syntastic_auto_loc_list = 1
-let g:syntastic_check_on_open = 1
-let g:syntastic_check_on_wq = 1
-let g:syntastic_javascript_checkers = ["eslint"]
-let g:syntastic_error_symbol = '❌'
-let g:syntastic_style_error_symbol = '⁉️'
-let g:syntastic_warning_symbol = '⚠️'
-let g:syntastic_style_warning_symbol = '💩'
-let g:elm_syntastic_show_warnings = 1 
-highlight link SyntasticErrorSign SignColumn
-highlight link SyntasticWarningSign SignColumn
-highlight link SyntasticStyleErrorSign SignColumn
-highlight link SyntasticStyleWarningSign SignColumn
 
 let g:EclimCompletionMethod = 'omnifunc'
 let g:jsx_ext_required = 0
 let g:ycm_semantic_triggers = { 'elm' : ['.'], }
-let g:syntastic_mode_map = { 'mode': 'active', 'active_filetypes': [],'passive_filetypes': [] }                                       
 let g:molokai_original = 1
 
 
@@ -112,10 +86,11 @@ Plug 'tpope/vim-commentary'
 Plug 'valloric/youcompleteme'
 Plug 'slashmili/alchemist.vim'
 Plug 'elixir-lang/vim-elixir'
-Plug 'vim-syntastic/syntastic'
 Plug 'mxw/vim-jsx'
 Plug 'pangloss/vim-javascript'
 Plug 'elmcast/elm-vim' 
 Plug 'sjl/badwolf'
 Plug 'tomasr/molokai'
+Plug 'jiangmiao/auto-pairs'
+Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }
 call plug#end() 
