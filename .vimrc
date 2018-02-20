@@ -1,19 +1,15 @@
-filetype off
-"filetype plugin indent on    " required
-filetype indent on 
-syntax on 
-"remap leader key
-let mapleader="<Space>"
-
-colorscheme molokai
-
-set nocompatible "use all features 
+colorscheme badwolf
+syntax on
+set nocompatible "use all features
 set incsearch "search incrementally
 set hls "highlight matches in search
 set ai "autoindent based on filetype
-set shiftwidth=4
-set softtabstop=4
-set tabstop=4
+"indicate trailing spaces with dash
+set listchars=trail:-
+set list
+set shiftwidth=2
+set softtabstop=2
+set tabstop=2
 set expandtab
 set showcmd
 set cursorline
@@ -22,16 +18,14 @@ set showmatch
 set smartcase
 set number
 set noswapfile
-set ttimeoutlen=100 "reduce timout length so o and O dont take so damn long.
-set laststatus=2 
-set scrolloff=3
+"set ttimeoutlen=100 "reduce timout length so o and O dont take so damn long.
+set hidden "Dont warn me when swapping to buffers when I have a modified one
 
-set statusline=%f
+nnoremap <Space> <Nop>
+let mapleader = "\<Space>"
 
-"Fuzzyfinder
-nmap <Space>o :FZF <CR>
 
-"Force yourself to use the keyboard movement keys 
+"Force yourself to use the keyboard movement keys
 nnoremap <Up> <NOP>
 nnoremap <Down> <NOP>
 nnoremap <Left> <NOP>
@@ -43,54 +37,104 @@ inoremap <Right> <NOP>
 vnoremap <Up> <NOP>
 vnoremap <Down> <NOP>
 vnoremap <Left> <NOP>
-vnoremap <Right> <NOP> 
+vnoremap <Right> <NOP>
+map <Up> \{
+nmap <Down> \}
+nmap <Up> \[
+nmap <Down> \]
 
 "rebind window switching
 nmap <silent> <c-k> :wincmd k<CR>
 nmap <silent> <c-j> :wincmd j<CR>
 nmap <silent> <c-h> :wincmd h<CR>
 nmap <silent> <c-l> :wincmd l<CR>
-"rebind tab navigation
-nmap <silent> <Space>w :tabclose <CR> 
-nmap <silent> <Space>l :tabnext <CR> 
-nmap <silent> <Space>h :tabprevious <CR> 
-nmap <silent> <Space>n :tabnew <CR>
-nmap <silent> <Space>d :lcd %:p:h <CR>
-" 
+
+"rebind tab nav
+nmap <silent> <Leader>ww :tabclose <CR>
+nmap <silent> <Leader>l :tabnext <CR>
+nmap <silent> <Leader>h :tabprevious <CR>
+nmap <silent> <Leader>n :tabnew <CR>
+"binding buffers
+nmap <silent> <Leader>k :bnext<CR>
+nmap <silent> <Leader>j :bprev<CR>
+nmap <silent> <Leader>w :bd <CR>
+nmap <silent> <Leader>1 :b1<CR>
+nmap <silent> <Leader>2 :b2<CR>
+nmap <silent> <Leader>3 :b3<CR>
+nmap <silent> <Leader>4 :b4<CR>
+nmap <silent> <Leader>5 :b5<CR>
+"remap ctrlp
+nmap <silent> <Leader>o :CtrlP<CR>
 "hit return again to clear search highlighting
-nnoremap <CR> :noh<CR><CR> 
-"vim builtins 
-runtime macros/matchit.vim
+nnoremap <CR> :noh<CR><CR>
+"remap format
+nmap <silent> <Leader>f mzgg=G'z
+nmap <silent> <Leader>ya gg"+yG
+"remap save to CTRL-s
+noremap <silent> <C-S>          :update<CR>
+vnoremap <silent> <C-S>         <C-C>:update<CR>
+inoremap <silent> <C-S>         <C-O>:update<CR>
+noremap <silent> <C-X>          :qa!<CR>
+vnoremap <silent> <C-X>         <C-C>:qa!<CR>
+inoremap <silent> <C-X>         <C-O>:qa!<CR>
+"quickly edit vimrc
+noremap <Leader>rc :tabe +134 $MYVIMRC<CR> 
+"source vimrc
+noremap <Leader>sc :source $MYVIMRC<CR>
 
-
-let g:EclimCompletionMethod = 'omnifunc'
+"Config
+let g:airline_powerline_fonts = 1
+let g:airline_theme="badwolf"
 let g:jsx_ext_required = 0
-let g:ycm_semantic_triggers = { 'elm' : ['.'], }
-let g:molokai_original = 1
+let g:ctrlp_working_path_mode = 'ra'
+let g:ctrlp_custom_ignore = 'node_modules\|DS_Store\|git'
 
+if empty(glob('~/.vim/autoload/plug.vim'))
+  silent !curl -fLo ~/.vim/autoload/plug.vim --create-dirs
+        \ https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
+  autocmd VimEnter * PlugInstall --sync | source $MYVIMRC
+endif
 
-"Elm stuff
-let g:elm_jump_to_error = 1
-let g:elm_make_show_warnings = 0
-let g:elm_detailed_complete = 1
-let g:elm_format_autosave = 1 
-let g:elm_format_fail_silently = 1
-let g:elm_format_two_spaces = 1
-let g:elm_setup_keybindings = 1
+autocmd vimenter * NERDTree | wincmd p
+autocmd StdinReadPre * let s:std_in=1
+autocmd VimEnter * if argc() == 0 && !exists("s:std_in") | NERDTree | endif
 
 call plug#begin('~/.vim/plugged')
-Plug 'VundleVim/Vundle.vim'
+"Git plugin
 Plug 'tpope/vim-fugitive'
+"change surrounding texts
 Plug 'tpope/vim-surround'
-Plug 'tpope/vim-commentary'
-Plug 'valloric/youcompleteme'
-Plug 'slashmili/alchemist.vim'
-Plug 'elixir-lang/vim-elixir'
-Plug 'mxw/vim-jsx'
-Plug 'pangloss/vim-javascript'
-Plug 'elmcast/elm-vim' 
+"color schemes
 Plug 'sjl/badwolf'
 Plug 'tomasr/molokai'
-Plug 'jiangmiao/auto-pairs'
+Plug 'rafi/awesome-vim-colorschemes'
+"language specific plugins
+Plug 'pangloss/vim-javascript'
+Plug 'mxw/vim-jsx'
+"sweet statusline plugin!
+Plug 'vim-airline/vim-airline'
+Plug 'vim-airline/vim-airline-themes'
+"Vim exchange! Swapping regions of text
+Plug 'tommcdo/vim-exchange'
+"tab completion
+Plug 'ervandew/supertab'
+"show buffers in status line
+Plug 'bling/vim-bufferline'
+"File explorer
+Plug 'scrooloose/nerdtree'
+Plug 'scrooloose/nerdcommenter'
+Plug 'Xuyuanp/nerdtree-git-plugin'
+"fuzzyfinder
 Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }
-call plug#end() 
+"different fuzzy finder
+Plug 'ctrlpvim/ctrlp.vim'
+call plug#end()
+
+
+
+
+
+"file specific mappings
+autocmd FileType javascript nmap <Leader>t oit('', () => {<ESC>oexpect(actual).toEqual(expected);<ESC>o});<ESC>kkf'a
+autocmd FileType javascript nmap <Leader>cl iconsole.log(``);<ESC>==0f`a
+autocmd FileType javascript nmap <Leader>e iexpect().toBe();<ESC>0f(a
