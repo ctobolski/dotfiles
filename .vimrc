@@ -18,7 +18,7 @@ set showmatch
 set smartcase
 set number
 set noswapfile
-"set ttimeoutlen=100 "reduce timout length so o and O dont take so damn long.
+set ttimeoutlen=100 "reduce timout length so o and O dont take so damn long.
 set hidden "Dont warn me when swapping to buffers when I have a modified one
 
 nnoremap <Space> <Nop>
@@ -38,10 +38,6 @@ vnoremap <Up> <NOP>
 vnoremap <Down> <NOP>
 vnoremap <Left> <NOP>
 vnoremap <Right> <NOP>
-map <Up> \{
-nmap <Down> \}
-nmap <Up> \[
-nmap <Down> \]
 
 "rebind window switching
 nmap <silent> <c-k> :wincmd k<CR>
@@ -69,16 +65,19 @@ nmap <silent> <Leader>o :CtrlP<CR>
 nnoremap <CR> :noh<CR><CR>
 "remap format
 nmap <silent> <Leader>f mzgg=G'z
-nmap <silent> <Leader>ya gg"+yG
 "remap save to CTRL-s
 noremap <silent> <C-S>          :update<CR>
 vnoremap <silent> <C-S>         <C-C>:update<CR>
 inoremap <silent> <C-S>         <C-O>:update<CR>
-noremap <silent> <C-X>          :qa!<CR>
-vnoremap <silent> <C-X>         <C-C>:qa!<CR>
-inoremap <silent> <C-X>         <C-O>:qa!<CR>
+noremap <silent> <C-Q>          :qa!<CR>
+vnoremap <silent> <C-Q>         <C-C>:qa!<CR>
+inoremap <silent> <C-Q>         <C-O>:qa!<CR>
+"add newlines above or below
+nmap zj o<Esc>k
+nmap zk O<Esc>j
+
 "quickly edit vimrc
-noremap <Leader>rc :tabe +134 $MYVIMRC<CR> 
+noremap <Leader>rc :tabe $MYVIMRC<CR>
 "source vimrc
 noremap <Leader>sc :source $MYVIMRC<CR>
 
@@ -111,6 +110,7 @@ Plug 'rafi/awesome-vim-colorschemes'
 "language specific plugins
 Plug 'pangloss/vim-javascript'
 Plug 'mxw/vim-jsx'
+Plug 'jparise/vim-graphql'
 "sweet statusline plugin!
 Plug 'vim-airline/vim-airline'
 Plug 'vim-airline/vim-airline-themes'
@@ -128,6 +128,10 @@ Plug 'Xuyuanp/nerdtree-git-plugin'
 Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }
 "different fuzzy finder
 Plug 'ctrlpvim/ctrlp.vim'
+"elixir
+Plug 'elixir-editors/vim-elixir'
+"awesome support for functions and stuff! Allows repeat on vim surround and stuff
+Plug 'tpope/vim-repeat'
 call plug#end()
 
 
