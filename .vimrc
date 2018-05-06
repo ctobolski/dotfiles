@@ -1,4 +1,5 @@
-colorscheme badwolf
+filetype plugin on
+colorscheme gruvbox
 syntax on
 set nocompatible "use all features
 set incsearch "search incrementally
@@ -88,6 +89,13 @@ let g:jsx_ext_required = 0
 let g:ctrlp_working_path_mode = 'ra'
 let g:ctrlp_custom_ignore = 'node_modules\|DS_Store\|git'
 
+set completeopt-=preview
+if !exists("g:ycm_semantic_triggers")
+  let g:ycm_semantic_triggers = {}
+endif
+let g:ycm_semantic_triggers['typescript'] = ['.']
+
+
 if empty(glob('~/.vim/autoload/plug.vim'))
   silent !curl -fLo ~/.vim/autoload/plug.vim --create-dirs
         \ https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
@@ -99,25 +107,26 @@ autocmd StdinReadPre * let s:std_in=1
 autocmd VimEnter * if argc() == 0 && !exists("s:std_in") | NERDTree | endif
 
 call plug#begin('~/.vim/plugged')
-"Git plugin
-Plug 'tpope/vim-fugitive'
-"change surrounding texts
-Plug 'tpope/vim-surround'
 "color schemes
 Plug 'sjl/badwolf'
+Plug 'morhetz/gruvbox'
 Plug 'tomasr/molokai'
 Plug 'rafi/awesome-vim-colorschemes'
 "language specific plugins
 Plug 'pangloss/vim-javascript'
 Plug 'mxw/vim-jsx'
 Plug 'jparise/vim-graphql'
+Plug 'Quramy/tsuquyomi'
+Plug 'leafgarland/typescript-vim'
+Plug 'Quramy/vim-js-pretty-template'
+Plug 'jason0x43/vim-js-indent'
+Plug 'Quramy/vim-dtsm'
+Plug 'mhartington/vim-typings'
 "sweet statusline plugin!
 Plug 'vim-airline/vim-airline'
 Plug 'vim-airline/vim-airline-themes'
 "Vim exchange! Swapping regions of text
 Plug 'tommcdo/vim-exchange'
-"tab completion
-Plug 'ervandew/supertab'
 "show buffers in status line
 Plug 'bling/vim-bufferline'
 "File explorer
@@ -128,17 +137,28 @@ Plug 'Xuyuanp/nerdtree-git-plugin'
 Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }
 "different fuzzy finder
 Plug 'ctrlpvim/ctrlp.vim'
-"elixir
-Plug 'elixir-editors/vim-elixir'
 "awesome support for functions and stuff! Allows repeat on vim surround and stuff
 Plug 'tpope/vim-repeat'
+"Git plugin
+Plug 'tpope/vim-fugitive'
+"change surrounding texts
+Plug 'tpope/vim-surround'
+"cant live without
+Plug 'jiangmiao/auto-pairs'
+"autocompletion engine
+Plug 'valloric/YouCompleteMe'
 call plug#end()
-
-
-
-
 
 "file specific mappings
 autocmd FileType javascript nmap <Leader>t oit('', () => {<ESC>oexpect(actual).toEqual(expected);<ESC>o});<ESC>kkf'a
 autocmd FileType javascript nmap <Leader>cl iconsole.log(``);<ESC>==0f`a
 autocmd FileType javascript nmap <Leader>e iexpect().toBe();<ESC>0f(a
+autocmd FileType javascript nmap <Leader>tt oit('', () => {<CR>});<ESC>kkf'a
+
+autocmd FileType typescript nmap <Leader>tt oit('', () => {<CR>});<ESC>kkf'a
+autocmd FileType typescript nmap <Leader>td odescribe('', () => {<CR>});<ESC>kkf'a
+autocmd FileType typescript nmap <Leader>cl iconsole.log(``);<ESC>==0f`a
+
+autocmd FileType typescript let @f=":TsuQuickFix"
+
+autocmd FileType typescript let @t=":!npm test"
