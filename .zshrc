@@ -17,10 +17,6 @@ set -o vi
 #Binds
 bindkey '^R' history-incremental-search-backward
 
-#MyOwnConfig
-#
-#
-
 # :)
 alias grok='man'
 source ~/.private.zshrc
@@ -32,3 +28,10 @@ export NVM_DIR="/Users/chris/.nvm"
 
 
 [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
+
+# Add RVM to PATH for scripting. Make sure this is the last PATH variable change.
+export PATH="$PATH:$HOME/.rvm/bin"
+alias clipdir="pwd | pbcopy"
+alias shrug="echo ¯\\\_(ツ)_/¯"
+alias p='pushd'
+alias b='popd'

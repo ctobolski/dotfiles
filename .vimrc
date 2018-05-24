@@ -6,7 +6,7 @@ set incsearch "search incrementally
 set hls "highlight matches in search
 set ai "autoindent based on filetype
 "indicate trailing spaces with dash
-set listchars=trail:-
+set listchars=trail:~
 set list
 set shiftwidth=2
 set softtabstop=2
@@ -21,6 +21,7 @@ set number
 set noswapfile
 set ttimeoutlen=100 "reduce timout length so o and O dont take so damn long.
 set hidden "Dont warn me when swapping to buffers when I have a modified one
+set scrolloff=5 " cursor doesnt sit at bottom of screen, bottom is always x lines down
 
 nnoremap <Space> <Nop>
 let mapleader = "\<Space>"
@@ -119,6 +120,7 @@ Plug 'jparise/vim-graphql'
 Plug 'Quramy/tsuquyomi'
 Plug 'leafgarland/typescript-vim'
 Plug 'Quramy/vim-js-pretty-template'
+Plug 'ianks/vim-tsx'
 Plug 'jason0x43/vim-js-indent'
 Plug 'Quramy/vim-dtsm'
 Plug 'mhartington/vim-typings'
@@ -153,12 +155,16 @@ call plug#end()
 autocmd FileType javascript nmap <Leader>t oit('', () => {<ESC>oexpect(actual).toEqual(expected);<ESC>o});<ESC>kkf'a
 autocmd FileType javascript nmap <Leader>cl iconsole.log(``);<ESC>==0f`a
 autocmd FileType javascript nmap <Leader>e iexpect().toBe();<ESC>0f(a
+autocmd FileType javascript nmap <Leader>td odescribe('', () => {<CR>});<ESC>kkf'a
 autocmd FileType javascript nmap <Leader>tt oit('', () => {<CR>});<ESC>kkf'a
+autocmd FileType javascript let @t=":!npm test"
 
 autocmd FileType typescript nmap <Leader>tt oit('', () => {<CR>});<ESC>kkf'a
 autocmd FileType typescript nmap <Leader>td odescribe('', () => {<CR>});<ESC>kkf'a
 autocmd FileType typescript nmap <Leader>cl iconsole.log(``);<ESC>==0f`a
 
+
 autocmd FileType typescript let @f=":TsuQuickFix"
+autocmd FileType typescript let @r=":TsuRenameSymbolC"
 
 autocmd FileType typescript let @t=":!npm test"
