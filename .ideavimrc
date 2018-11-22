@@ -1,3 +1,7 @@
+set surround
+set vim-multiple-cursors
+set visualbell
+set noerrorbells
 set scrolloff=3         " 3 lines above/below cursor when scrolling 
 let mapleader = " " 
 " key bindings for quickly moving between windows
@@ -7,11 +11,24 @@ nmap <c-l> <c-w>l
 nmap <c-k> <c-w>k
 nmap <c-j> <c-w>j
 
-nmap <leader>t :action GotoFile<cr>
-nmap <leader>c :action GotoClass<cr>
+nmap <c-S-l> :action MoveTabRight<cr>
+nmap <c-S-h> :action MoveEditorToOppositeTabGroup<cr>
+
+nmap <C-S-W> :action CloseEditor<cr>
+nmap <C-S-T> :action ReopenClosedTab<cr>
+
+nmap <leader>l :action NextTab<cr>
+nmap <leader>h :action PreviousTab<cr>
+
+nmap <leader>j :action Back<cr>
+nmap <leader>k :action Forward<cr>
+
+nmap <leader>o :action GotoFile<cr>
 nmap <leader>ns :action GotoSymbol<cr>
+nmap <leader>e :action GotoNextError<cr>
 nmap <leader>nm :action FileStructurePopup<cr>
 nmap <leader>d :action ShowErrorDescription<cr>
+
 
 " Won't work in visual mode (with vmap) for some reason.
 nmap <leader>c<space> :action CommentByLineComment<cr>
