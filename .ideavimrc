@@ -23,8 +23,10 @@ nmap <leader>h :action PreviousTab<cr>
 nmap <leader>j :action Back<cr>
 nmap <leader>k :action Forward<cr>
 
+nmap <leader>f :action ReformatCode<cr>
 nmap <leader>o :action GotoFile<cr>
 nmap <leader>ns :action GotoSymbol<cr>
+nmap <leader>b :action GotoDeclaration<cr>
 nmap <leader>e :action GotoNextError<cr>
 nmap <leader>nm :action FileStructurePopup<cr>
 nmap <leader>d :action ShowErrorDescription<cr>
