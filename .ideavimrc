@@ -2,8 +2,8 @@ set surround
 set vim-multiple-cursors
 set visualbell
 set noerrorbells
-set scrolloff=3         " 3 lines above/below cursor when scrolling 
-let mapleader = " " 
+set scrolloff=3         " 3 lines above/below cursor when scrolling
+let mapleader = " "
 " key bindings for quickly moving between windows
 " h left, l right, k up, j down
 nmap <c-h> <c-w>h
@@ -24,6 +24,7 @@ nmap <leader>j :action Back<cr>
 nmap <leader>k :action Forward<cr>
 
 nmap <leader>f :action ReformatCode<cr>
+nmap <leader>t :action RunClass<cr>
 nmap <leader>o :action GotoFile<cr>
 nmap <leader>ns :action GotoSymbol<cr>
 nmap <leader>b :action GotoDeclaration<cr>
