@@ -1,5 +1,8 @@
 {
-"vim.easymotion": true,
+  "liveshare.audio.joinCallBehavior": "accept",
+  "workbench.editor.enablePreview": false,
+  "editor.tabCompletion": "on",
+  "vim.easymotion": true,
   "vim.surround": true,
   "vim.incsearch": true,
   "vim.useSystemClipboard": true,
@@ -7,9 +10,61 @@
   "vim.leader": "<space>",
   "vim.normalModeKeyBindingsNonRecursive": [
     {
-      "before": ["<leader>", "a"],
+      "before": ["leader", "a"],
       "commands": ["workbench.action.showCommands"]
     },
+    {
+      "before": ["leader", "o"],
+      "commands": ["workbench.action.quickOpen"]
+    },
+    {
+      "before": ["leader", "w"],
+      "commands": ["workbench.action.closeActiveEditor"]
+    },
+    {
+      "before": ["leader", "W"],
+      "commands": ["workbench.action.closeEditorsInGroup"]
+    },
+    {
+      "before": ["leader", "e"],
+      "commands": ["editor.action.marker.nextInFiles"]
+    },
+    {
+      "before": ["<c-w>", "L"],
+      "commands": ["workbench.action.moveEditorToNextGroup"]
+    },
+    {
+      "before": ["<c-w>", "H"],
+      "commands": ["workbench.action.moveEditorToPreviousGroup"]
+    },
+    {
+      "before": ["leader", "h"],
+      "commands": ["workbench.action.openPreviousRecentlyUsedEditorInGroup"]
+    },
+    {
+      "before": ["leader", "l"],
+      "commands": ["workbench.action.openNextRecentlyUsedEditorInGroup"]
+    },
+    {
+      "before": ["leader", "r", "n"],
+      "commands": ["editor.action.rename"]
+    },
+    {
+      "before": ["<c-h>"],
+      "after": ["<c-w>", "h"]
+    },
+    {
+      "before": ["<c-j>"],
+      "after": ["<c-w>", "j"]
+    },
+    {
+      "before": ["<c-k>"],
+      "after": ["<c-w>", "k"]
+    },
+    {
+      "before": ["<c-l>"],
+      "after": ["<c-w>", "l"]
+    }
   ],
   "vim.visualModeKeyBindingsNonRecursive": [
     {
@@ -17,4 +72,4 @@
       "after": ["p", "g", "v", "y"]
     }
   ]
-  }
+}
