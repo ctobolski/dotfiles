@@ -1,75 +1,120 @@
 {
-  "liveshare.audio.joinCallBehavior": "accept",
-  "workbench.editor.enablePreview": false,
-  "editor.tabCompletion": "on",
-  "vim.easymotion": true,
-  "vim.surround": true,
-  "vim.incsearch": true,
-  "vim.useSystemClipboard": true,
-  "vim.useCtrlKeys": true,
-  "vim.leader": "<space>",
-  "vim.normalModeKeyBindingsNonRecursive": [
+  "editor.minimap.enabled": false,
+    "editor.formatOnSave": true,
+    "editor.fontSize": 18,
+    "files.exclude": {
+      "**/node_modules": true,
+      "**/dist": true,
+      "**/build": true,
+      "**/.history": true
+    },
+    "liveshare.audio.joinCallBehavior": "accept",
+    "workbench.editor.enablePreview": false,
+    "editor.tabCompletion": "on",
+    "vim.easymotion": true,
+    "vim.surround": true,
+    "vim.incsearch": true,
+    "vim.useSystemClipboard": true,
+    "vim.useCtrlKeys": true,
+    "vim.leader": "<space>",
+    "terminal.integrated.shell.windows": "C:\\Windows\\sysnative\\bash.exe",
+    "terminal.integrated.shellArgs.windows": ["-c", "zsh"],
+    "vim.normalModeKeyBindingsNonRecursive": [
+    {
+      "before": ["leader", "n"],
+      "commands": ["explorer.newFile"]
+
+    },
     {
       "before": ["leader", "a"],
       "commands": ["workbench.action.showCommands"]
+
     },
     {
       "before": ["leader", "o"],
       "commands": ["workbench.action.quickOpen"]
+
     },
     {
       "before": ["leader", "w"],
       "commands": ["workbench.action.closeActiveEditor"]
+
     },
     {
       "before": ["leader", "W"],
       "commands": ["workbench.action.closeEditorsInGroup"]
+
     },
     {
       "before": ["leader", "e"],
       "commands": ["editor.action.marker.nextInFiles"]
+
     },
     {
       "before": ["<c-w>", "L"],
       "commands": ["workbench.action.moveEditorToNextGroup"]
+
     },
     {
       "before": ["<c-w>", "H"],
       "commands": ["workbench.action.moveEditorToPreviousGroup"]
+
     },
     {
       "before": ["leader", "h"],
-      "commands": ["workbench.action.openPreviousRecentlyUsedEditorInGroup"]
+      "commands": ["workbench.action.previousEditor"]
+
     },
     {
       "before": ["leader", "l"],
-      "commands": ["workbench.action.openNextRecentlyUsedEditorInGroup"]
+      "commands": ["workbench.action.nextEditor"]
+
     },
     {
       "before": ["leader", "r", "n"],
       "commands": ["editor.action.rename"]
+
     },
     {
       "before": ["<c-h>"],
       "after": ["<c-w>", "h"]
+
     },
     {
       "before": ["<c-j>"],
       "after": ["<c-w>", "j"]
+
     },
     {
       "before": ["<c-k>"],
       "after": ["<c-w>", "k"]
+
     },
     {
       "before": ["<c-l>"],
       "after": ["<c-w>", "l"]
+
     }
-  ],
-  "vim.visualModeKeyBindingsNonRecursive": [
+
+    ],
+    "vim.visualModeKeyBindingsNonRecursive": [
+    {
+      "before": ["leader", "a"],
+      "commands": ["workbench.action.showCommands"]
+
+    },
     {
       "before": ["p"],
       "after": ["p", "g", "v", "y"]
+
     }
-  ]
+
+    ],
+    "explorer.confirmDelete": false,
+    "window.zoomLevel": 0,
+    "typescript.updateImportsOnFileMove.enabled": "always",
+    "eslint.packageManager": "yarn",
+    "liveshare.featureSet": "insiders"
+
 }
+
