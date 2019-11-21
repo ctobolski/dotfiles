@@ -4,27 +4,25 @@ set visualbell
 set noerrorbells
 set scrolloff=3         " 3 lines above/below cursor when scrolling
 let mapleader = " "
-" key bindings for quickly moving between windows
-" h left, l right, k up, j down
+
+" Movement keys
 nmap <c-h> <c-w>h
 nmap <c-l> <c-w>l
 nmap <c-k> <c-w>k
 nmap <c-j> <c-w>j
+nmap <leader>k :action NextTab<cr>
+nmap <leader>j :action PreviousTab<cr>
+
+nmap <leader>h :action Back<cr>
+nmap <leader>l :action Forward<cr>
 
 nmap <c-S-l> :action MoveTabRight<cr>
 nmap <c-S-h> :action MoveEditorToOppositeTabGroup<cr>
 
-nmap <C-S-W> :action CloseEditor<cr>
-nmap <C-S-T> :action ReopenClosedTab<cr>
+nmap <leader>w :action CloseEditor<cr>
 
-nmap <leader>l :action NextTab<cr>
-nmap <leader>h :action PreviousTab<cr>
-
-nmap <leader>j :action Back<cr>
-nmap <leader>k :action Forward<cr>
 
 nmap <leader>f :action ReformatCode<cr>
-nmap <leader>t :action RunClass<cr>
 nmap <leader>o :action GotoFile<cr>
 nmap <leader>ns :action GotoSymbol<cr>
 nmap <leader>b :action GotoDeclaration<cr>
@@ -32,6 +30,11 @@ nmap <leader>e :action GotoNextError<cr>
 nmap <leader>nm :action FileStructurePopup<cr>
 nmap <leader>d :action ShowErrorDescription<cr>
 
+nmap <leader>r :action RefactoringMenu2<cr>
+nmap <leader>rn :action RenameElement<cr>
+nmap <leader>ri :action Inline<cr>
+nmap <leader>rm :action ExtractMethod<cr>
 
-" Won't work in visual mode (with vmap) for some reason.
-nmap <leader>c<space> :action CommentByLineComment<cr>
+
+nmap <leader>1 :action RunClass<cr>
+nmap <leader>1 :action RunClass<cr>
