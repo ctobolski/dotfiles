@@ -1,12 +1,12 @@
 filetype plugin on
-colorscheme gruvbox
+colorscheme badwolf
 syntax on
 set nocompatible "use all features
 set incsearch "search incrementally
 set hls "highlight matches in search
 set ai "autoindent based on filetype
 "indicate trailing spaces with dash
-set listchars=trail:~
+set listchars=trail:·
 set list
 set shiftwidth=2
 set softtabstop=2
@@ -109,6 +109,7 @@ autocmd VimEnter * if argc() == 0 && !exists("s:std_in") | NERDTree | endif
 
 call plug#begin('~/.vim/plugged')
 "color schemes
+Plug 'plasticboy/vim-markdown'
 Plug 'sjl/badwolf'
 Plug 'morhetz/gruvbox'
 Plug 'tomasr/molokai'
@@ -148,7 +149,7 @@ Plug 'tpope/vim-surround'
 "cant live without
 Plug 'jiangmiao/auto-pairs'
 "autocompletion engine
-Plug 'valloric/YouCompleteMe'
+"Plug 'valloric/YouCompleteMe'
 call plug#end()
 
 "file specific mappings
