@@ -1,4 +1,4 @@
-local ret_status="%(?:%{$fg_bold[green]%}😌➜ :%{$fg_bold[red]%}🤬 ➜ )%{$reset_color%}"
+local ret_status="%(?:%{$fg_bold[green]%}😌 ➜ :%{$fg_bold[red]%}🤬 ➜ )%{$reset_color%}"
 NEWLINE=$'\n'
 local time="%{$fg_bold[yellow]%}[[ %T%  ]]%{$reset_color%}"
 #PROMPT="%{$fg_bold[cyan]%}%~%{$reset_color%}$(git_prompt_info)${NEWLINE}${ret_status} %{$fg[cyan]%}%{$reset_color%}"
