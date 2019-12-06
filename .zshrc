@@ -17,6 +17,9 @@ set -o vi
 #Binds
 bindkey '^R' history-incremental-search-backward
 
+alias l='exa -lahF -s=modified -r'
+alias ls='exa'
+
 # :)
 alias grok='man'
 source ~/.private.zshrc
