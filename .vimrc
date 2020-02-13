@@ -78,6 +78,8 @@ inoremap <silent> <C-Q>         <C-O>:qa!<CR>
 nmap zj o<Esc>k
 nmap zk O<Esc>j
 
+nmap <silent> <Leader>1 :NERDTreeToggle<CR>
+
 "quickly edit vimrc
 noremap <Leader>rc :tabe $MYVIMRC<CR>
 "source vimrc
@@ -106,6 +108,19 @@ endif
 autocmd vimenter * NERDTree | wincmd p
 autocmd StdinReadPre * let s:std_in=1
 autocmd VimEnter * if argc() == 0 && !exists("s:std_in") | NERDTree | endif
+
+" Syntastic Settings
+set statusline+=%#warningmsg#
+set statusline+=%{SyntasticStatuslineFlag()}
+set statusline+=%*
+
+let g:syntastic_always_populate_loc_list = 1
+let g:syntastic_auto_loc_list = 1
+let g:syntastic_check_on_open = 1
+let g:syntastic_check_on_wq = 0
+
+let NERDTreeQuitOnOpen=1
+
 
 call plug#begin('~/.vim/plugged')
 "color schemes
@@ -150,6 +165,7 @@ Plug 'tpope/vim-surround'
 Plug 'jiangmiao/auto-pairs'
 "autocompletion engine
 "Plug 'valloric/YouCompleteMe'
+Plug 'vim-syntastic/syntastic'
 call plug#end()
 
 "file specific mappings
