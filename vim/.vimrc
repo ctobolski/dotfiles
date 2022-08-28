@@ -23,6 +23,7 @@ set cursorline
 set wildmenu
 set showmatch
 set smartcase
+set ignorecase
 set number
 set noswapfile
 set ttimeoutlen=100 "reduce timout length so o and O dont take so damn long.
@@ -95,11 +96,18 @@ noremap <Leader>sc :source $MYVIMRC<CR>
 "###############                ###############"
 
 "###############      FZF       ###############"
+" [Buffers] Jump to the existing window if possible
+set rtp+='/home/chris/.local/custom/fzf'
+let g:fzf_buffers_jump = 1
+nmap <silent> <Leader><Space> :Buffers<CR>
+nmap <silent> <Leader>o :FZF<CR>
 
 "###############    Airline     ###############"
 "let g:airline_powerline_fonts = 1
 "let g:airline_theme="gruvbox"
-"
+let g:airline#extensions#fzf#enabled = 1
+
+
 "###############    Airline     ###############"
 let g:jsx_ext_required = 0
 let g:ctrlp_working_path_mode = 'ra'
