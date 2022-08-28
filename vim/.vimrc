@@ -81,7 +81,6 @@ map <leader>q :bp<bar>sp<bar>bn<bar>bd<CR>
 "hit return again to clear search highlighting
 nnoremap <CR> :noh<CR><CR>
 
-nmap <silent> <Leader>1 :NERDTreeToggle<CR>
 
 "quickly edit vimrc
 noremap <Leader>rc :tabe $MYVIMRC<CR>
@@ -108,21 +107,20 @@ nmap <silent> <Leader>o :FZF<CR>
 let g:airline#extensions#fzf#enabled = 1
 
 
-"###############    Airline     ###############"
 let g:jsx_ext_required = 0
 let g:ctrlp_working_path_mode = 'ra'
 let g:ctrlp_custom_ignore = 'node_modules\|DS_Store\|git'
 
 
 
+"###############    NerdTree    ###############"
 "Nerdtree quits when a file is opened from nerdtree
-let NERDTreeQuitOnOpen=1
 let NERDTreeShowHidden=1
-
-
-autocmd vimenter * NERDTree | wincmd l
-autocmd StdinReadPre * let s:std_in=1
-autocmd VimEnter * if argc() == 0 && !exists("s:std_in") | NERDTree | endif
+nmap <silent> <Leader>1 :NERDTreeToggle<CR>
+"Enable Nerdtree on open
+"autocmd vimenter * NERDTree | wincmd l
+"autocmd StdinReadPre * let s:std_in=1
+"autocmd VimEnter * if argc() == 0 && !exists("s:std_in") | NERDTree | endif
 
 "ntpeters/vim-better-whitespace
 let g:strip_whitespace_on_save=1
