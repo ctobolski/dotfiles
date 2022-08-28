@@ -1,0 +1,36 @@
+[submodule "vim/fzf"]
+	path = vim/fzf
+	url = git@github.com:junegunn/fzf.git
+[submodule "vim/vim-surround"]
+	path = vim/vim-surround
+	url = https://github.com/tpope/vim-surround.git
+[submodule "vim/nerdcommenter"]
+	path = vim/nerdcommenter
+	url = https://github.com/scrooloose/nerdcommenter.git
+[submodule "vim/nerdtree"]
+	path = vim/nerdtree
+	url = https://github.com/scrooloose/nerdtree.git
+[submodule "vim/vim-devicons"]
+	path = vim/vim-devicons
+	url = https://github.com/ryanoasis/vim-devicons.git
+[submodule "vim/delimitMate"]
+	path = vim/delimitMate
+	url = https://github.com/Raimondi/delimitMate.git
+[submodule "vim/vim-airline"]
+	path = vim/vim-airline
+	url = https://github.com/vim-airline/vim-airline.git
+[submodule "vim/vim-repeat"]
+	path = vim/vim-repeat
+	url = https://github.com/tpope/vim-repeat.git
+[submodule "vim/coc.nvim"]
+	path = vim/coc.nvim
+	url = https://github.com/neoclide/coc.nvim.git
+[submodule "vim/ctrlp.vim"]
+	path = vim/ctrlp.vim
+	url = https://github.com/ctrlpvim/ctrlp.vim.git
+[submodule "vim/molokai"]
+	path = vim/molokai
+	url = https://github.com/tomasr/molokai.git
+[submodule "vim/nerdtree-git-plugin"]
+	path = vim/nerdtree-git-plugin
+	url = https://github.com/Xuyuanp/nerdtree-git-plugin.git
