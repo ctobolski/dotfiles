@@ -1,0 +1,10 @@
+{
+  "javascript.suggest.autoImports": true,
+  "typescript.suggest.autoImports": true,
+  "eslint.packageManager": "yarn",
+  "coc.preferences.formatOnSaveFiletypes": ["typescript", "javascript", "json"],
+  "snippets.ultisnips.directories": ["UltiSnips", "~/.vim/snips"],
+  "snippets.extends": {
+    "typescript": ["javascript"]
+  }
+}
