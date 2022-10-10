@@ -32,18 +32,12 @@ nmap <silent> <c-l> :wincmd l<CR>
 nmap <silent> <Leader>ww :tabclose <CR>
 nmap <silent> <Leader>j :tabprevious <CR>
 nmap <silent> <Leader>k :tabnext <CR>
-nmap <silent> <Leader>n :tabnew <CR>
 
 "binding buffers
 nmap <silent> <Leader>h :bprev<CR>
 nmap <silent> <Leader>l :bnext<CR>
 nmap <silent> <Leader>w :bd <CR>
 nmap <silent> <Leader>w! :bd! <CR>
-nmap <silent> <Leader>1 :b1<CR>
-nmap <silent> <Leader>2 :b2<CR>
-nmap <silent> <Leader>3 :b3<CR>
-nmap <silent> <Leader>4 :b4<CR>
-nmap <silent> <Leader>5 :b5<CR>
 map <leader>q :bp<bar>sp<bar>bn<bar>bd<CR>
 
 "hit return again to clear search highlighting

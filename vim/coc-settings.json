@@ -6,5 +6,6 @@
   "snippets.ultisnips.directories": ["UltiSnips", "~/.vim/snips"],
   "snippets.extends": {
     "typescript": ["javascript"]
-  }
+  },
+  "jest.binCommand": "yarn jest"
 }
