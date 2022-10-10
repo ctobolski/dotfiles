@@ -34,3 +34,6 @@
 [submodule "vim/nerdtree-git-plugin"]
 	path = vim/nerdtree-git-plugin
 	url = https://github.com/Xuyuanp/nerdtree-git-plugin.git
+[submodule "vim/fzf.vim"]
+	path = vim/fzf.vim
+	url = git@github.com:junegunn/fzf.vim.git
