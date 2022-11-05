@@ -1,40 +1,54 @@
-#Exports :)
-export ZSH=/Users/chris/.oh-my-zsh
-export PATH=$PATH:/Users/chris/workspace/react-native/ios/albums/node_modules/.bin/
-export ECLIPSE_HOME='/Users/chris/Applications/Eclipse.app/Contents/Eclipse'
-export FZF_DEFAULT_COMMAND='ag --hidden --ignore .git -g ""'
-export FZF_DEFAULT_OPTS='--height 40% --reverse --border'
-ZSH_THEME="christobolski"
-plugins=(git)
-source $ZSH/oh-my-zsh.sh
+################                ###############"
+#                                              "
+#                Base Settings                 "
+#                                              "
+################                ###############"
+export ZSH="$HOME/.oh-my-zsh"
 
+plugins=(git)
+
+source $ZSH/oh-my-zsh.sh
 #ALIAIIIIII
 alias zshrc='vi ~/.zshrc'
 alias szsh='source ~/.zshrc'
 alias vimrc='vi ~/.vimrc'
-set -o vi 
+alias shrug="print '¯\\\_(ツ)_/¯'"
+alias v='vim -o `fzf`'
+set -o vi
 #
 #Binds
 bindkey '^R' history-incremental-search-backward
 
-alias l='exa -lahF -s=modified -r'
-alias ls='exa'
+export VOLTA_HOME="$HOME/.volta"
+export PATH=$PATH:/home/chris/.local/bin
+export PATH=$PATH:/home/chris/.yarn/bin
+export PATH=$PATH:/usr/local/go/bin
+export PATH="$VOLTA_HOME/bin:$PATH"
 
-# :)
-alias grok='man'
-source ~/.private.zshrc
-#terminal configuration to allow use of ctrl-s in VIM
-stty -ixon
+# Unix only
+#alias pbcopy="xclip -selection clipboard"
+#alias pbpaste='xclip -selection clipboard -o'
 
-export NVM_DIR="/Users/chris/.nvm"
-[ -s "$NVM_DIR/nvm.sh" ] && . "$NVM_DIR/nvm.sh"  # This loads nvm
-
-
+################      FZF      ###############"
 [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
+export FZF_DEFAULT_COMMAND="fd -t f -H"
+export FZF_DEFAULT_OPTS="--no-mouse --height 50% -1 --reverse --multi --info=inline --preview='bat --style=numbers --color=always --line-range :250 {} 2> /dev/null' --bind='f2:toggle-preview,ctrl-y:execute-silent(bat {+} | pbcopy)'"
 
-# Add RVM to PATH for scripting. Make sure this is the last PATH variable change.
-export PATH="$PATH:$HOME/.rvm/bin"
-alias clipdir="pwd | pbcopy"
-alias shrug="echo ¯\\\_(ツ)_/¯"
-alias p='pushd'
-alias b='popd'
+_fzf_comprun() {
+  local command=$1
+  shift
+
+  case "$command" in
+    cd)           fzf "$@" --preview 'tree -C {} | head -20' ;;
+    export)       fzf "$@" --preview "eval 'echo \$'{}" ;;
+    *)            fzf "$@" ;;
+  esac
+}
+
+
+################      BAT      ###############"
+alias cat=batcat
+
+
+autoload -U +X bashcompinit && bashcompinit
+complete -o nospace -C /usr/bin/terraform terraform
