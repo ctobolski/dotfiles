@@ -1,5 +1,29 @@
-git clone https://github.com/tmux-plugins/tpm ~/.tmux/plugins/tpm
+#!/bin/bash
+set -e
 
-# add to path in zshrc
-git clone https://github.com/jimeh/tmuxifier.git ~/.tmuxifier
-echo "Don't forget to add to path in zshrc"
+PLATFORM="$(uname -s)"
+echo "Installing tmux"
+
+case "$PLATFORM" in
+	"Darwin") brew install tmux
+	;;
+	"Linux") sudo apt install tmux
+	;;
+	*) exit 1
+	;;
+esac
+echo "Done!"
+
+echo "========================================"
+
+echo "Installing plugin manager"
+if [[ ! -d ~/.tmux/plugins/tpm ]]; then
+	git clone https://github.com/tmux-plugins/tpm ~/.tmux/plugins/tpm
+	echo "Done!"
+else
+	echo "TPM already installed, doing nothing"
+fi
+
+echo "Copying config"
+
+cp ./.tmux.conf ~/
