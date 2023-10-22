@@ -29,9 +29,14 @@ local k = require("luasnip.nodes.key_indexer").new_key
 --custom loaders applied to all files
 require('luasnip.loaders.from_vscode').lazy_load()
 require("luasnip.loaders.from_lua").lazy_load({ paths = './snippets/luasnippets/all' })
-vim.notify('Hello from luasnippets')
 
 local map = vim.keymap.set
+
+-- source snippet configuration
+map("n", ",s", "<cmd>source ~/.config/nvim/after/plugin/luasnip.lua<CR>", {silent = true, desc = "Source luasnip config"})
+-- source snippet configuration
+map("n", "<leader>es", require("luasnip.loaders").edit_snippet_files, {silent = true, desc = "Edit snippets"})
+
 
 ls.config.set_config {
   history = true,
@@ -56,7 +61,6 @@ map("i", "<c-e>", function()
   end
 end, { silent = true })
 
-map("n", ",s", "<cmd>source ~/.config/nvim/lua/core/plugin_config/luasnip.lua<CR>")
 
 ls.add_snippets("lua", {
   s(
@@ -71,25 +75,3 @@ ls.add_snippets("lua", {
   ),
 })
 
-ls.add_snippets("typescript", {
-  s("suite",
-    fmt([[
-      describe('{}', () => {{
-        {}
-
-        it('should {}', {}() => {{
-          {}
-        }})
-
-      }});
-    ]],
-      {
-        i(1, "SuiteName"),
-        c(2, { t "  beforeEach(() => {})", t "" }),
-        i(3, "do something"),
-        c(4, { t "async ", t "" }),
-        i(0)
-      }
-    )
-  )
-})

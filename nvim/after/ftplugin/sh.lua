@@ -1,2 +1,1 @@
-require("luasnip.loaders.from_lua").load({paths = "./snippets/luasnippets/sh/"})
-vim.notify(' hello world ')
+require("luasnip.loaders.from_lua").lazy_load({paths = "./snippets/luasnippets/sh/"})

@@ -475,8 +475,6 @@ mason_lspconfig.setup_handlers {
 -- See `:help cmp`
 local cmp = require 'cmp'
 local luasnip = require 'luasnip'
-require('luasnip.loaders.from_vscode').lazy_load()
-luasnip.config.setup {}
 
 cmp.setup {
   snippet = {
@@ -519,8 +517,8 @@ cmp.setup {
   },
 }
 
-vim.keymap.set("n", "<leader>es", require("luasnip.loaders").edit_snippet_files, {silent = true, desc = "Edit snippets"})
-require("luasnip.loaders.from_lua").load({ paths = './snippets/luasnippets/all' })
 
+-- require custom configuration
+-- require('lua.custom.plugins')
 -- The line beneath this is called `modeline`. See `:help modeline`
 -- vim: ts=2 sts=2 sw=2 et
