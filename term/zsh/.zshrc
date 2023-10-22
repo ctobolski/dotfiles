@@ -4,23 +4,18 @@
 #                                              "
 ################                ###############"
 source ~/.config/zsh/antigen.zsh
-
-# Load the oh-my-zsh's library.
 antigen use oh-my-zsh
-
-# Bundles from the default repo (robbyrussell's oh-my-zsh).
 antigen bundle git
-antigen bundle lein
-antigen bundle command-not-found
-
-# Syntax highlighting bundle.
-antigen bundle zsh-users/zsh-syntax-highlighting
+antigen bundle 'command-not-found'
+antigen bundle 'zsh-users/zsh-autosuggestions'
+antigen bundle 'zsh-users/zsh-syntax-highlighting'
 
 # Load the theme.
 antigen theme robbyrussell
 
 # Tell Antigen that you're done.
 antigen apply
+
 
 ################                ###############"
 #                                              "
@@ -55,22 +50,20 @@ fi
 #Make sure that you add the global ignore file in .config/fd/ignore if you want to use the hidden flag
 
 ################      FZF      ###############"
-if which fzf > /dev/null 2>&1; then 
-  [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
-  export FZF_DEFAULT_COMMAND="fd --hidden -t f"
-  export FZF_DEFAULT_OPTS="--no-mouse --height 50% -1 --reverse --multi --info=inline --preview='bat --style=numbers --color=always --line-range :250 {} 2> /dev/null' --bind='f2:toggle-preview,ctrl-y:execute-silent(bat {+} | pbcopy)'"
+[ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
+export FZF_DEFAULT_COMMAND="fd --hidden -t f"
+export FZF_DEFAULT_OPTS="--no-mouse --height 50% -1 --reverse --multi --info=inline --preview='bat --style=numbers --color=always --line-range :250 {} 2> /dev/null' --bind='f2:toggle-preview,ctrl-y:execute-silent(bat {+} | pbcopy)'"
 
-  _fzf_comprun() {
-    local command=$1
-    shift
+_fzf_comprun() {
+  local command=$1
+  shift
 
-    case "$command" in
-      cd)           fzf "$@" --preview 'tree -C {} | head -20' ;;
-      export)       fzf "$@" --preview "eval 'echo \$'{}" ;;
-      *)            fzf "$@" ;;
-    esac
-  }
-fi
+  case "$command" in
+    cd)           fzf "$@" --preview 'tree -C {} | head -20' ;;
+    export)       fzf "$@" --preview "eval 'echo \$'{}" ;;
+    *)            fzf "$@" ;;
+  esac
+}
 
 
 ################      BAT      ###############"

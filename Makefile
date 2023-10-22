@@ -6,6 +6,10 @@ ZSH_ENV_HOME := $(HOME)/
 NVIM_HOME := $(CONFIG_HOME)/nvim
 HR := @echo "========================================"
 
+# Install flags -- keep the steps for reference, but refuse to install
+ANTIGEN = 1
+
+
 install: export CONFIG_HOME = $(CONFIG_HOME)
 install: export ZPLUG_HOME = $(ZPLUG_HOME)
 install: export ZSH_HOME = $(ZSH_HOME)
@@ -36,15 +40,22 @@ kitty:
 		echo "[kitty]: Already installed"; \
 	else \
 		curl -L https://sw.kovidgoyal.net/kitty/installer.sh | sh /dev/stdin; \
-	fi; \
-	if [[ ! -L ~/.local/bin/kitty ]]; then \
+	fi;
+	@if [[ ! -L ~/.local/bin/kitty ]]; then \
 		echo "Setting up kitty as an application"; \
 		ln -sf ~/.local/kitty.app/bin/kitty ~/.local/kitty.app/bin/kitten ~/.local/bin/; \
 		cp ~/.local/kitty.app/share/applications/kitty.desktop ~/.local/share/applications/; \
 		cp ~/.local/kitty.app/share/applications/kitty-open.desktop ~/.local/share/applications/; \
 		sed -i "s|Icon=kitty|Icon=/home/$$USER/.local/kitty.app/share/icons/hicolor/256x256/apps/kitty.png|g" ~/.local/share/applications/kitty*.desktop; \
 		sed -i "s|Exec=kitty|Exec=/home/$$USER/.local/kitty.app/bin/kitty|g" ~/.local/share/applications/kitty*.desktop; \
-	fi
+	fi;
+	@mkdir -p ~/.config/kitty
+	@cp ./term/kitty/kitty.conf ~/.config/kitty/
+	# install some themes
+	@if [[ ! -d ~/.config/kitty/kitty-themes ]]; then \
+		git clone --depth 1 https://github.com/dexpota/kitty-themes.git ~/.config/kitty/kitty-themes; \
+	fi;
+	@ln -sf ~/.config/kitty/kitty-themes/themes/gruvbox_dark.conf ~/.config/kitty/theme.conf
 	$(HR)
 		
 
@@ -72,6 +83,7 @@ crates: rust
 		echo "Completions installed for eza"; \
 	fi
 
+ifeq ($(ANTIGEN),1)
 antigen: dirs zsh 
 	@echo "Installing antigen"
 	@if [[ -f ~/.config/zsh/antigen.zsh ]]; then \
@@ -79,6 +91,9 @@ antigen: dirs zsh
 	else \
 		curl -L git.io/antigen > ~/.config/zsh/antigen.zsh; \
 	fi
+else
+	@echo "Not installing antigen"
+endif
 
 git: 
 	@echo "Installing fzf"
