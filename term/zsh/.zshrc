@@ -27,6 +27,7 @@ antigen apply
 PLATFORM="$(uname -s)"
 # Generic Aliases
 alias v='nvim'
+alias vim='nvim'
 alias vs='nvim -o `fzf`'
 alias zshrc='v ~/.zshrc'
 alias szsh='source ~/.zshrc'
@@ -73,6 +74,7 @@ fi
 
 ################      EZA      ###############"
 if which eza > /dev/null 2>&1; then 
+  alias exa="eza"
   alias l="eza -l"
   alias lt="eza -T"
   alias la="eza -la"
