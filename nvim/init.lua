@@ -519,5 +519,8 @@ cmp.setup {
   },
 }
 
+vim.keymap.set("n", "<leader>es", require("luasnip.loaders").edit_snippet_files, {silent = true, desc = "Edit snippets"})
+require("luasnip.loaders.from_lua").load({ paths = './snippets/luasnippets/all' })
+
 -- The line beneath this is called `modeline`. See `:help modeline`
 -- vim: ts=2 sts=2 sw=2 et
