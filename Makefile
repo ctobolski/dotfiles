@@ -11,11 +11,13 @@ install: export ZPLUG_HOME = $(ZPLUG_HOME)
 install: export ZSH_HOME = $(ZSH_HOME)
 install: export ZSH_ENV_HOME = $(ZSH_ENV_HOME)
 
-all: dirs zsh kitty rust crates git
+all: dirs zsh kitty rust crates git antigen
 	@echo "All done!"
 
 dirs: 
 	@mkdir -p ~/git
+	@mkdir -p ~/.config/zsh
+
 zsh:
 	$(HR)
 	@echo "Installing Zsh..."
@@ -70,6 +72,13 @@ crates: rust
 		echo "Completions installed for eza"; \
 	fi
 
+antigen: dirs zsh 
+	@echo "Installing antigen"
+	@if [[ -f ~/.config/zsh/antigen.zsh ]]; then \
+		echo "[Antigen] is already installed"; \
+	else \
+		curl -L git.io/antigen > ~/.config/zsh/antigen.zsh; \
+	fi
 
 git: 
 	@echo "Installing fzf"
