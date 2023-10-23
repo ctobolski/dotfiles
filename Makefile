@@ -15,7 +15,7 @@ install: export ZPLUG_HOME = $(ZPLUG_HOME)
 install: export ZSH_HOME = $(ZSH_HOME)
 install: export ZSH_ENV_HOME = $(ZSH_ENV_HOME)
 
-all: dirs zsh kitty rust crates git antigen
+all: dirs zsh kitty rust crates git antigen go
 	@echo "All done!"
 
 dirs: 
@@ -96,6 +96,7 @@ else
 endif
 
 git: 
+	# misc tools from git repositories
 	@echo "Installing fzf"
 	@if [[ -d ~/.fzf ]]; then \
 		echo "[fzf] Already installed"; \
@@ -103,3 +104,13 @@ git:
 		git clone --depth 1 https://github.com/junegunn/fzf.git ~/.fzf; \
 		~/.fzf/install; \
 	fi
+
+go:
+	@echo "Installing go
+	@if [[ -d ~/.fooby ]]; then \
+		echo "[go] Already installed"; \
+	else \
+		echo "Go is not installed, follow steps here https://go.dev/doc/install"; \
+	fi
+	$(HR)
+

@@ -92,3 +92,6 @@ fi
 ################      RUST      ###############"
 export PATH="$HOME/.cargo/bin:$PATH"
 export FPATH="~/git/eza-community/completions/zsh:$FPATH"
+
+################      Go        ###############"
+export PATH=$PATH:/usr/local/go/bin
