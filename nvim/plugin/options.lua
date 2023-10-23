@@ -4,12 +4,16 @@
 local opt = vim.o
 -- Set highlight on search
 opt.hlsearch = false
+opt.incsearch = true
 
 -- Make line numbers default
 vim.wo.number = true
 -- Keep signcolumn on by default
 vim.wo.signcolumn = 'yes'
 vim.wo.relativenumber = true
+opt.number = true
+opt.splitright = true
+opt.splitbelow = true
 
 -- Enable mouse mode
 opt.mouse = 'a'
@@ -46,6 +50,7 @@ opt.softtabstop = 2
 opt.shiftwidth = 2
 opt.shiftround = true
 opt.expandtab = true
+opt.scrolloff = 10
 
 
 -- [[ Highlight on yank ]]
