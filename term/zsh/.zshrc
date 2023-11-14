@@ -5,7 +5,8 @@
 ################                ###############"
 source ~/.config/zsh/antigen.zsh
 
-source ~/.zsh_config/.zsh_k8s
+# Tech Stack specific bundles
+source ~/.config/zsh/custom/k8s.zsh
 
 antigen use oh-my-zsh
 antigen bundle git

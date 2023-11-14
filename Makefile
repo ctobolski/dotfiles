@@ -21,8 +21,9 @@ all: dirs zsh kitty rust crates git antigen go docker kubernetes
 dirs: 
 	@mkdir -p ~/git
 	@mkdir -p ~/.config/zsh
+	@mkdir -p ~/.config/zsh/custom
 
-zsh:
+zsh: dirs
 	$(HR)
 	@echo "Installing Zsh..."
 	@if [[ -f /usr/bin/zsh ]]; then \
@@ -32,7 +33,7 @@ zsh:
 		chsh -s $(shell which zsh); \
 	fi
 	@cp ./term/zsh/.zshrc ~/
-	@cp -r ./term/zsh/.zsh_config ~/.zsh_config
+	@cp ./term/zsh/custom/*.zsh ~/.config/zsh/custom
 	$(HR)
 
 kitty:
