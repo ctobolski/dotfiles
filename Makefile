@@ -32,6 +32,7 @@ zsh:
 		chsh -s $(shell which zsh); \
 	fi
 	@cp ./term/zsh/.zshrc ~/
+	@cp -r ./term/zsh/.zsh_config ~/.zsh_config
 	$(HR)
 
 kitty:

@@ -4,6 +4,9 @@
 #                                              "
 ################                ###############"
 source ~/.config/zsh/antigen.zsh
+
+source ~/.zsh_config/.zsh_k8s
+
 antigen use oh-my-zsh
 antigen bundle git
 antigen bundle 'command-not-found'
