@@ -1,0 +1,13 @@
+{
+  "javascript.suggest.autoImports": true,
+  "typescript.suggest.autoImports": true,
+  "eslint.packageManager": "yarn",
+  "prettier.configPath": "~/.prettierrc",
+  "coc.preferences.formatOnSave": true,
+  "snippets.ultisnips.directories": ["UltiSnips", "~/.vim/snips"],
+  "snippets.extends": {
+    "typescript": ["javascript"]
+  },
+  "jest.binCommand": "yarn jest",
+  "snippets.ultisnips.pythonPrompt": false
+}
