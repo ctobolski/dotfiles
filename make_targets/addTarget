@@ -1,0 +1,8 @@
+TARGET=$1
+
+for OS in Linux Darwin; do
+	SCRIPT_PATH="./make_targets/$OS/${TARGET}.sh"
+	touch "$SCRIPT_PATH"
+	chmod +x "$SCRIPT_PATH"
+	echo 'echo "not implemented"' >"$SCRIPT_PATH"
+done
