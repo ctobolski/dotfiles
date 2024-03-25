@@ -101,3 +101,7 @@ export FPATH="~/git/eza-community/completions/zsh:$FPATH"
 export PATH=$PATH:/usr/local/go/bin
 ################    Lazygit     ###############"
 echo "alias lg='lazygit'" >> ~/.zshrc
+
+################      WORK      ###############"
+
+source ~/.config/zsh/custom/work_env.zsh 2> /dev/null
