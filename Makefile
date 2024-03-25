@@ -34,6 +34,12 @@ zsh: dirs
 	@echo "[zsh]: done"
 	$(HR)
 
+nvim: dirs
+	@echo "[nvim]: Setting up nvim"
+	@./make_targets/$(UNAME_S)/nvim.sh
+	@echo "[nvim]: done"
+	$(HR)
+
 keyboard: dirs
 	@echo "[keyboard]: Setting up keyboard"
 	@./make_targets/$(UNAME_S)/keyboard.sh
