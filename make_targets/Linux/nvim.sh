@@ -2,6 +2,7 @@ echo "[nvim]: Removing old backups"
 rm -rf ~/.local/share/nvim.bak
 rm -rf ~/.local/state/nvim.bak
 rm -rf ~/.cache/nvim.bak
+rm -rf ~/.config/nvim.bak
 
 echo "[nvim]: Creating new backups"
 mv ~/.config/nvim{,.bak} 2>/dev/null
