@@ -21,7 +21,7 @@ install: export ZPLUG_HOME = $(ZPLUG_HOME)
 install: export ZSH_HOME = $(ZSH_HOME)
 install: export ZSH_ENV_HOME = $(ZSH_ENV_HOME)
 
-all: dirs zsh rust node crates git antigen go docker kubernetes fzf
+all: dirs zsh rust node crates font git antigen go docker kubernetes fzf
 	@echo "All done!"
 
 dirs:
@@ -29,6 +29,13 @@ dirs:
 	@./make_targets/$(UNAME_S)/dirs.sh
 	@echo "[dirs]: done"
 	$(HR)
+
+font:
+	@echo "[font]: Setting up nerdfonts"
+	@./make_targets/$(UNAME_S)/fonts.sh
+	@echo "[font]: done"
+	$(HR)
+
 
 zsh: dirs
 	@echo "[zsh]: Setting up zsh"

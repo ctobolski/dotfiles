@@ -17,4 +17,4 @@ mv ~/.config/nvim{,.bak} 2>/dev/null
 # mv ~/.cache/nvim{,.bak} 2>/dev/null
 
 echo "[nvim]: Copying config"
-cp -r $MAKE_HOME/nvim $CONFIG_HOME/nvim
+cp -r $MAKE_HOME/nvim-g/nvim $CONFIG_HOME/
