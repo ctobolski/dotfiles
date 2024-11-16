@@ -2,6 +2,8 @@ echo "[rust:crates]: Installing zoxide"
 cargo install zoxide --locked
 echo "[rust:crates]: Installing ripgrep"
 cargo install ripgrep
+echo "[rust:crates]: Installing fd"
+cargo install fd-find
 echo "[rust:crates]: Installing eza"
 cargo install eza
 if rg "FPATH" | rg eza ~/.zshrc >/dev/null 2>&1; then

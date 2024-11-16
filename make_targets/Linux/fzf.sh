@@ -1,4 +1,3 @@
-#TODO: add fzf config to zsh dotfile
 echo "Installing fzf"
 if [[ -d ~/.fzf ]]; then
 	echo "[fzf] Already installed"

@@ -10,8 +10,10 @@ MAKE_HOME := $(CURDIR)
 export MAKE_HOME
 export CONFIG_HOME
 
+
 # Install flags -- keep the steps for reference, but refuse to install
 ANTIGEN = 1
+KITTY = 0
 
 
 install: export CONFIG_HOME = $(CONFIG_HOME)
@@ -19,10 +21,10 @@ install: export ZPLUG_HOME = $(ZPLUG_HOME)
 install: export ZSH_HOME = $(ZSH_HOME)
 install: export ZSH_ENV_HOME = $(ZSH_ENV_HOME)
 
-all: dirs zsh kitty rust crates git antigen go docker kubernetes fzf
+all: dirs zsh rust node crates git antigen go docker kubernetes fzf
 	@echo "All done!"
 
-dirs: 
+dirs:
 	@echo "[dirs]: Setting up directories"
 	@./make_targets/$(UNAME_S)/dirs.sh
 	@echo "[dirs]: done"
@@ -46,12 +48,15 @@ keyboard: dirs
 	@echo "[keyboard]: done"
 	$(HR)
 
+ifeq ($(KITTY),1)
 kitty:
 	@echo "[kitty]: Setting up kitty"
 	@./make_targets/$(UNAME_S)/kitty.sh
 	@echo "[kitty]: done"
 	$(HR)
-		
+else
+	@echo "Not installing kitty"
+endif
 
 docker:
 	@echo "[docker]: Setting up docker"
@@ -74,7 +79,7 @@ k8s-kubectl:
 	@./make_targets/$(UNAME_S)/k8s-kubectl.sh
 	@echo "[kubectl]: done"
 	$(HR)
-	
+
 
 kubernetes: minikube k8s-kubectl
 	@echo "[k8s]: Installing kubernetes and kubectl"
@@ -86,15 +91,21 @@ rust:
 	@echo "[rust]: done"
 	$(HR)
 
+node:
+	@echo "[node]: Setting up node"
+	@./make_targets/$(UNAME_S)/node.sh
+	@echo "[node]: done"
+	$(HR)
+
 crates: rust
 	@echo "[rust:crates]: Adding rust crates"
-	@./make_targets/$(UNAME_S)/crates.sh
+	@./make_targets/shared/crates.sh
 	@echo "[rust:crates]: done"
 	$(HR)
-	
+
 
 ifeq ($(ANTIGEN),1)
-antigen: dirs zsh 
+antigen: dirs zsh
 	@echo "[zsh:antigen]: Adding zsh package manager antigen"
 	@./make_targets/$(UNAME_S)/antigen.sh
 	@echo "[zsh:antigen]: done"

@@ -1,3 +1,9 @@
+if which nvim >/dev/null 2>&1; then
+  echo "Looks like nvim is already installed"
+else
+  brew install neovim
+fi
+
 echo "[nvim]: Removing old backups"
 rm -rf ~/.local/share/nvim.bak
 rm -rf ~/.local/state/nvim.bak
