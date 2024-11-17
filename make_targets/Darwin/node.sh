@@ -3,6 +3,7 @@ if which volta >/dev/null 2>&1; then
   echo "Looks like volta is already installed"
 else
   curl https://get.volta.sh | bash
+  volta install node
 fi
 
 if which node >/dev/null 2>&1; then
