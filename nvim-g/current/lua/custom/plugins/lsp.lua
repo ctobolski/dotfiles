@@ -52,6 +52,27 @@ return {
 			-- Allows extra capabilities provided by nvim-cmp
 			"hrsh7th/cmp-nvim-lsp",
 		},
+		opts = function()
+			local ret = {
+				diagnostics = {
+					underline = true,
+					update_in_insert = false,
+					virtual_text = {
+						spacing = 4,
+						source = "if_many",
+						prefix = "●",
+						-- this will set set the prefix to a function that returns the diagnostics icon based on the severity
+						-- this only works on a recent 0.10.0 build. Will be set to "●" when not supported
+						-- prefix = "icons",
+					},
+				},
+				severity_sort = true,
+				inlay_hints = {
+					enabled = true,
+				},
+			}
+			return ret
+		end,
 		config = function()
 			-- Brief aside: **What is LSP?**
 			--
@@ -126,7 +147,7 @@ return {
 
 					-- Rename the variable under your cursor.
 					--  Most Language Servers support renaming across files, etc.
-					map("<leader>rn", vim.lsp.buf.rename, "[R]e[n]ame")
+					map("<leader>cr", vim.lsp.buf.rename, "[R]e[n]ame")
 
 					-- Execute a code action, usually your cursor needs to be on top of an error
 					-- or a suggestion from your LSP for this to activate.
@@ -135,6 +156,26 @@ return {
 					-- WARN: This is not Goto Definition, this is Goto Declaration.
 					--  For example, in C this would take you to the header.
 					map("gD", vim.lsp.buf.declaration, "[G]oto [D]eclaration")
+					map("[d", function()
+						vim.diagnostic.goto_prev({
+							severity = { min = vim.diagnostic.severity.WARN, max = vim.diagnostic.severity.INFO },
+						})
+						vim.diagnostic.open_float()
+					end, "[[] previous [d]iagnostic")
+					map("]d", function()
+						vim.diagnostic.goto_next()
+						vim.diagnostic.open_float()
+					end, "[]] next [d]iagnostic")
+					map("[e", function()
+						vim.diagnostic.goto_prev()
+						vim.diagnostic.open_float()
+					end, "[[] previous [e]rror")
+					map("]e", function()
+						vim.diagnostic.goto_next({
+							severity = vim.diagnostic.severity.ERROR,
+						})
+						vim.diagnostic.open_float()
+					end, "[]] next [e]rror")
 
 					-- The following two autocommands are used to highlight references of the
 					-- word under your cursor when your cursor rests there for a little while.

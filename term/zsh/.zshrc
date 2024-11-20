@@ -55,10 +55,12 @@ fi
 #Make sure that you add the global ignore file in .config/fd/ignore if you want to use the hidden flag
 
 ################      FZF      ###############"
-[ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
+if [[ ! "$PATH" == */Users/chris/.fzf/bin* ]]; then
+  PATH="${PATH:+${PATH}:}/Users/chris/.fzf/bin"
+fi
+source <(fzf --zsh)
 export FZF_DEFAULT_COMMAND="fd --hidden -t f"
 export FZF_DEFAULT_OPTS="--no-mouse --height 50% -1 --reverse --multi --info=inline --preview='bat --style=numbers --color=always --line-range :250 {} 2> /dev/null' --bind='f2:toggle-preview,ctrl-y:execute-silent(bat {+} | pbcopy)'"
-source <(fzf --zsh)
 
 _fzf_comprun() {
   local command=$1
@@ -87,12 +89,7 @@ if which eza > /dev/null 2>&1; then
 fi
 
 ################      ZOXIDE      ###############"
-if which zoxide > /dev/null 2>&1; then 
-  eval "$(zoxide init zsh)"
-  alias cd='z'
-  autoload -U +X bashcompinit && bashcompinit
-  complete -o nospace -C /usr/bin/terraform terraform
-fi
+eval "$(zoxide init zsh --cmd cd)"
 
 ################      RUST      ###############"
 export PATH="$HOME/.cargo/bin:$PATH"
@@ -101,8 +98,8 @@ export FPATH="~/git/eza-community/completions/zsh:$FPATH"
 ################      Go        ###############"
 export PATH=$PATH:/usr/local/go/bin
 ################    Lazygit     ###############"
-echo "alias lg='lazygit'" >> ~/.zshrc
+alias lg='lazygit'
 
 ################      WORK      ###############"
-
+export ZSH_CUSTOM_HOME=~/.config/zsh/custom
 source ~/.config/zsh/custom/work_env.zsh 2> /dev/null

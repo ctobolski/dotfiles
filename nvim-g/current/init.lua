@@ -230,7 +230,11 @@ require("lazy").setup({
 				--     i = { ['<c-enter>'] = 'to_fuzzy_refine' },
 				--   },
 				-- },
-				-- pickers = {}
+				pickers = {
+					find_files = {
+						find_command = { "fd", "--type", "f", "--hidden", "--follow" },
+					},
+				},
 				extensions = {
 					["ui-select"] = {
 						require("telescope.themes").get_dropdown(),
@@ -519,7 +523,7 @@ require("lazy").setup({
 	--
 	-- require 'kickstart.plugins.debug',
 	-- require 'kickstart.plugins.indent_line',
-	-- require 'kickstart.plugins.lint',
+	require("kickstart.plugins.lint"),
 	require("kickstart.plugins.autopairs"),
 	require("kickstart.plugins.neo-tree"),
 	require("kickstart.plugins.gitsigns"), -- adds gitsigns recommend keymaps

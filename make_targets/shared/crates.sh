@@ -1,5 +1,5 @@
 echo "[rust:crates]: Installing zoxide"
-cargo install zoxide --locked
+cargo install zoxide
 echo "[rust:crates]: Installing ripgrep"
 cargo install ripgrep
 echo "[rust:crates]: Installing fd"
