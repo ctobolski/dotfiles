@@ -255,7 +255,16 @@ return {
 				--    https://github.com/pmizio/typescript-tools.nvim
 				--
 				-- But for many setups, the LSP (`ts_ls`) will work just fine
-				ts_ls = {},
+				vtsls = {
+					root_dir = function(fname)
+						local util = require("lspconfig.util")
+						local base_tsconfig = util.root_pattern("tsconfig.base.json")(fname)
+						if base_tsconfig then
+							return base_tsconfig
+						end
+						return util.root_pattern("nx.json", "package.json", ".git")(fname)
+					end,
+				},
 				--
 
 				lua_ls = {

@@ -89,7 +89,7 @@ if which eza > /dev/null 2>&1; then
 fi
 
 ################      ZOXIDE      ###############"
-eval "$(zoxide init zsh --cmd cd)"
+eval "$(zoxide init zsh)"
 
 ################      RUST      ###############"
 export PATH="$HOME/.cargo/bin:$PATH"
