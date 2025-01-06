@@ -6,7 +6,8 @@ return {
 		config = function()
 			local lint = require("lint")
 			lint.linters_by_ft = {
-				markdown = { "markdownlint" },
+				-- causing an issue without markdown lint cli being installed
+				-- markdown = { "markdownlint" },
 				typescript = { "eslint_d" },
 				javascript = { "eslint_d" },
 			}
