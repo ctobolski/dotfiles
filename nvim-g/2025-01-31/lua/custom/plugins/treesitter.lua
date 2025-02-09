@@ -6,6 +6,10 @@ return {
 		-- [[ Configure Treesitter ]] See `:help nvim-treesitter`
 		opts = {
 			ensure_installed = {
+				"go",
+				"gomod",
+				"gowork",
+				"gosum",
 				"bash",
 				"c",
 				"diff",
